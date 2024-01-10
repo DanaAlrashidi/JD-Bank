@@ -8,7 +8,7 @@ import App from "./App";
 import Navbar from "./component/Navbar";
 import Profile from "./pages/Profile";
 import { Deposit } from "./pages/Deposit";
-import { Register } from "./pages/Register";
+import Register from "./pages/Register";
 import Search from "./pages/Search";
 import Transactions from "./pages/Transactions";
 import Transfere from "./pages/Transfere";

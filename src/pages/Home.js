@@ -23,6 +23,12 @@ export const Home = () => {
           Our Client?
         </button>
       </NavLink>
+
+      <NavLink to={"/register"}>
+        <button onClick={() => {}} className="btn btn-primary">
+          join us?
+        </button>
+      </NavLink>
     </div>
   );
 };
