@@ -1,14 +1,79 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import Home from "./pages/Home";
+
+import App from "./App";
+import Navbar from "./component/Navbar";
+import Profile from "./pages/Profile";
+import { Deposit } from "./pages/Deposit";
+import { Register } from "./pages/Register";
+import Search from "./pages/Search";
+import Transactions from "./pages/Transactions";
+import Transfere from "./pages/Transfere";
+import Users from "./pages/Users";
+import Withdraw from "./pages/Withdraw";
+import { Login } from "./pages/Login";
+import { Home } from "./pages/Home";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <div>
+        <App />
+      </div>
+    ),
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/deposit",
+        element: <Deposit />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
+      },
+      {
+        path: "/transactions",
+        element: <Transactions />,
+      },
+      {
+        path: "/transfere",
+        element: <Transfere />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+      {
+        path: "/withdraw",
+        element: <Withdraw />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Home />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
