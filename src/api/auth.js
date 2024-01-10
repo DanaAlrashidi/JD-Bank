@@ -2,7 +2,10 @@ import instance from ".";
 
 import { saveToken } from "./storage";
 const login = async (userInfo) => {
-  const { data } = await instance.post("/auth/login", userInfo);
+  const { data } = await instance.post(
+    "/mini-project/api/auth/login",
+    userInfo
+  );
   return data;
 };
 const register = async (userInfo) => {
@@ -15,12 +18,14 @@ const register = async (userInfo) => {
     formData
   );
   if (data.token) {
-    storeToken(data.token);
+    saveToken(data.token);
   }
   return data;
-  const getAllUsers = async () => {
-    const { data } = await instance.get("/mini-project/api/auth/users");
-    return data;
-  };
 };
-export { saveToken, register };
+// };
+// const getAllUsers = async () => {
+//   const { data } = await instance.get("/mini-project/api/auth/users");
+//   return data;
+// };
+
+export { login, register };
