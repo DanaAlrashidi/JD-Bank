@@ -22,7 +22,7 @@ const register = async (userInfo) => {
   }
   return data;
 };
-// };
+
 // const getAllUsers = async () => {
 //   const { data } = await instance.get("/mini-project/api/auth/users");
 //   return data;
