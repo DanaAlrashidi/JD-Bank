@@ -3,7 +3,7 @@ import instance from "../api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const Deposit = () => {
-  const [amount, setAmout] = useState(0);
+  const [amount, setAmount] = useState(0);
   // const amountLessThan = (e) => {};
   const deposit = async (amount) => {
     const { data } = await instance.put(
@@ -39,16 +39,26 @@ export const Deposit = () => {
   // console.log(myDeposit);
 
   return (
-    <div>
-      <p>{myProfile?.balance}</p>
-      <input
-        type="number"
-        className="bg-gray-300 rounded-md"
-        onChange={(e) => setAmout(e.target.value)}
-      />
-      <button className="bg-green-400" onClick={mutate}>
-        Deposit
-      </button>
+    <div
+      style={{ width: "100vw", height: "100vh" }}
+      className="flex justify-center	items-center"
+    >
+      <div
+        style={{ width: "50%", height: "50%" }}
+        className="flex flex-col justify-center	items-center"
+      >
+        <p>{myProfile?.balance}</p>
+        <input
+          className="bg-gray-300 rounded"
+          onChange={(e) => setAmount(e.target.value)}
+        />
+        <button
+          onClick={mutate}
+          class="btn btn-accent btn-outline bg-cyan-500 shadow-lg shadow-cyan-500/50 "
+        >
+          Deposit
+        </button>
+      </div>
     </div>
   );
 };

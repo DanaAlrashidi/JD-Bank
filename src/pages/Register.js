@@ -5,7 +5,7 @@ import { register } from "../api/auth";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState([{}]);
   const [user, setUser] = useContext(Usercontext);
   const navigate = useNavigate();
   const handleChange = (e) => {

@@ -3,6 +3,7 @@ import img from "../assets/Logoo.png";
 const Navbar = () => {
   return (
     <div>
+      {/* <Navbar className="bg-base-100"></Navbar> */}
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown  ">
@@ -31,10 +32,10 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Homepage</a>
+                <a href="/">Homepage</a>
               </li>
               <li>
-                <a className="bg-primary">Portfolio</a>
+                <a className="bg-primary">Transactions</a>
               </li>
               <li>
                 <a>About</a>
@@ -93,7 +94,7 @@ const Navbar = () => {
         <div className="w-24 rounded-xl">
           <img src={img} />
         </div>
-      </div>
+      </div>{" "}
     </div>
   );
 };

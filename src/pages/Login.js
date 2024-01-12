@@ -7,6 +7,10 @@ export const Login = () => {
   const [userInfo, setUserInfo] = useState({});
   const [user, setUser] = useContext(Usercontext);
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   const { mutate } = useMutation({
     mutationKey: ["login"],
     mutationFn: () => login(userInfo),
@@ -16,19 +20,14 @@ export const Login = () => {
     },
   });
 
-  const handleChange = (e) => {
-    setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Add login logic here
-    mutate();
-  };
-
+  // const handleFormSubmit = (e) => {
+  //   // e.preventDefault();
+  //   mutate();
+  // };
+  // onSubmit={handleFormSubmit}
   return (
     <div className="flex justify-center">
-      <form onSubmit={handleFormSubmit}>
+      <form>
         <label>
           username
           <input
