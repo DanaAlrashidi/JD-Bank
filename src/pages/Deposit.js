@@ -41,15 +41,15 @@ export const Deposit = () => {
   return (
     <div
       style={{ width: "100vw", height: "100vh" }}
-      className="flex justify-center	items-center"
+      className="flex justify-center flex-col items-center font-serif space-y-2 bg-slate-100"
     >
       <div
         style={{ width: "50%", height: "50%" }}
-        className="flex flex-col justify-center	items-center"
+        className="flex justify-center flex-col items-center font-serif space-y-2"
       >
         <p>{myProfile?.balance}</p>
         <input
-          className="bg-gray-300 rounded"
+          className="bg-gray-300 rounded h-50 w-50"
           onChange={(e) => setAmount(e.target.value)}
         />
         <button

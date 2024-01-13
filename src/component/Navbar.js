@@ -4,9 +4,9 @@ const Navbar = () => {
   return (
     <div>
       {/* <Navbar className="bg-base-100"></Navbar> */}
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
-          <div className="dropdown  ">
+      <div className="navbar bg-white">
+        <div className="navbar-start ">
+          <div className="dropdown ">
             <div
               tabIndex={0}
               role="button"
@@ -29,24 +29,29 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-30"
             >
               <li>
                 <a href="/">Homepage</a>
               </li>
               <li>
-                <a className="bg-primary">Transactions</a>
+                <a href="/transactions" className="bg-primary">
+                  Transactions
+                </a>
               </li>
               <li>
-                <a>About</a>
+                <a href="/search">Search</a>
               </li>
             </ul>
           </div>
         </div>
         <div className="navbar-center">
-          <a className="btn btn-ghost text-xl">JD.Bank</a>
+          {/* <a className="btn btn-ghost text-xl">JD.Bank</a> */}
+          <div className="w-24 rounded-xl">
+            <img src={img} />
+          </div>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end ">
           <button className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,17 +89,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <div
-        style={{
-          height: "20vh",
-          width: "30vh",
-        }}
-        className="avatar"
-      >
-        <div className="w-24 rounded-xl">
-          <img src={img} />
-        </div>
-      </div>{" "}
     </div>
   );
 };

@@ -1,16 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
-import Usercontext from "../context/Usercontext.js";
+import UserContext from "../context/Usercontext.js";
 import { login } from "../api/auth";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export const Login = () => {
   const [userInfo, setUserInfo] = useState({});
-  const [user, setUser] = useContext(Usercontext);
+  const [user, setUser] = useContext(UserContext);
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
   const { mutate } = useMutation({
     mutationKey: ["login"],
     mutationFn: () => login(userInfo),
@@ -20,16 +16,26 @@ export const Login = () => {
     },
   });
 
-  // const handleFormSubmit = (e) => {
-  //   // e.preventDefault();
-  //   mutate();
-  // };
-  // onSubmit={handleFormSubmit}
+  const handleChange = (e) => {
+    setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    mutate();
+  };
+
   return (
-    <div className="flex justify-center">
-      <form>
-        <label>
-          username
+    <div
+      style={{ height: "100vh", width: "100vw" }}
+      className=" flex items-center justify-center bg-slate-100	"
+    >
+      <form
+        className="flex justify-center flex-col items-center font-serif space-y-2"
+        onSubmit={handleFormSubmit}
+      >
+        <label className="text-center">
+          Write your username:
           <input
             type="username"
             name="username"
@@ -39,8 +45,8 @@ export const Login = () => {
             className="input input-bordered w-full max-w-xs"
           />
         </label>
-        <label>
-          password
+        <label className="text-center">
+          Your password:
           <input
             name="password"
             type="password"
@@ -51,7 +57,7 @@ export const Login = () => {
           />
         </label>
 
-        <button type="submit" className="btn btn-accent">
+        <button type="submit" className="btn btn-accent w-full max-w-xs">
           Login
         </button>
       </form>
