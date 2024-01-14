@@ -41,8 +41,14 @@ const Transfere = () => {
     queryKey: ["allusers"],
     queryFn: getAllUsers,
   });
+<<<<<<< HEAD:src/pages/transfere.js
+=======
+  const [amount, setAmount] = useState(0);
+  // const [user, setUser] = useState({});
+>>>>>>> b8754d9c0dfec364be4cd3d7113eec3e02932a05:src/pages/Transfere.js
 
-  const transfere = async (amount) => {
+  const transfere = async (amount, user) => {
+    // const userList =  ()=> users.filter((user.username)==u)
     const { data } = await instance.put(
       `/mini-project/api/transactions/transfer/${userInfo?.username}`,
       { amount }

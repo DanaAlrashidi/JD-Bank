@@ -21,11 +21,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <App />
-      </div>
-    ),
+    element: <App />,
     children: [
       {
         path: "/",
@@ -78,7 +74,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </QueryClientProvider>
   </React.StrictMode>
 );
-
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

@@ -1,20 +1,23 @@
 import { Outlet } from "react-router";
 import "./App.css";
 import Navbar from "./component/Navbar";
-import { NavLink } from "react-router-dom";
-import UserContext from "./context/Usercontext";
+// import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getToken } from "./api/storage";
+import Usercontext from "./context/Usercontext.js";
+// import Login from "./pages/Login";
 
 function App() {
   const [user, setUser] = useState(false);
   useEffect(() => {
-    if (getToken()) {
+    const token = getToken();
+    if (token) {
       setUser(true);
     }
   }, []);
+
   return (
-    <UserContext.Provider value={[user, setUser]}>
+    <Usercontext.Provider value={[user, setUser]}>
       <div>
         <Navbar />
         <div
@@ -28,7 +31,7 @@ function App() {
           <Outlet />
         </div>
       </div>
-    </UserContext.Provider>
+    </Usercontext.Provider>
   );
 }
 
