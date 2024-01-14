@@ -44,6 +44,11 @@ const Transactions = () => {
             Transfere
           </button>
         </NavLink>
+        <NavLink to={"/profile"}>
+          <button onClick={() => {}} className="btn btn-primary font-serif">
+            Back
+          </button>
+        </NavLink>
       </div>
     </div>
   );

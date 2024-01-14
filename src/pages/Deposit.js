@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import instance from "../api";
 import { useMutation, useQuery } from "@tanstack/react-query";
-
+import { NavLink } from "react-router-dom";
 export const Deposit = () => {
   const [amount, setAmount] = useState(0);
   // const amountLessThan = (e) => {};
@@ -21,7 +21,7 @@ export const Deposit = () => {
     queryKey: ["balance"],
     queryFn: myPofile,
   });
-  console.log(myProfile);
+  // console.log(myProfile.balance);
 
   const { mutate } = useMutation({
     mutationKey: ["deposit"],
@@ -58,6 +58,11 @@ export const Deposit = () => {
         >
           Deposit
         </button>
+        <NavLink to={"/transactions"}>
+          <button onClick={() => {}} className="btn btn-primary font-serif">
+            Back
+          </button>
+        </NavLink>
       </div>
     </div>
   );
