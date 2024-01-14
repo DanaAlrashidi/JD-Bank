@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-
 import App from "./App";
 import Navbar from "./component/Navbar";
 import Profile from "./pages/Profile";
@@ -16,15 +15,12 @@ import Users from "./pages/Users";
 import Withdraw from "./pages/Withdraw";
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <App />
-      </div>
-    ),
+    element: <App />,
     children: [
       {
         path: "/",
@@ -70,13 +66,13 @@ const router = createBrowserRouter([
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={new QueryClient()}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );
-
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
