@@ -37,10 +37,12 @@ const Transfere = () => {
     queryFn: getAllUsers,
   });
   const [amount, setAmount] = useState(0);
+  // const [user, setUser] = useState({});
 
-  const transfere = async (amount) => {
+  const transfere = async (amount, user) => {
+    // const userList =  ()=> users.filter((user.username)==u)
     const { data } = await instance.put(
-      "/mini-project/api/transactions/transfer/<username>",
+      `/mini-project/api/transactions/transfer/${user}`,
       { amount }
     );
     return data;
