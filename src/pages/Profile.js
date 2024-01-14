@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { me } from "../api/auth";
 import { useQuery } from "@tanstack/react-query";
 import { BASE_URL } from "../api";
 import { deleteToken } from "../api/storage";
 import { NavLink } from "react-router-dom";
+import UserContext from "../context/Usercontext";
 const Profile = () => {
+  const [user, setUser] = useContext(UserContext);
+
   const { data: myProfile } = useQuery({
     queryKey: ["mee"],
     queryFn: me,
@@ -32,7 +35,10 @@ const Profile = () => {
           </NavLink>
           <NavLink to={"/"}>
             <button
-              onClick={deleteToken}
+              onClick={() => {
+                deleteToken();
+                setUser(false);
+              }}
               className="btn btn-primary font-serif"
             >
               Logout

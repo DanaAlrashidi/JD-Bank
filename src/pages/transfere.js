@@ -1,6 +1,6 @@
 import React from "react";
 import instance from "../api";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAllUsers } from "../api/auth";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -32,15 +32,19 @@ import { NavLink } from "react-router-dom";
 // };
 ////////////////////////////////////////////////////////////////
 const Transfere = () => {
-  const { data: users } = useQuery({
+  const queryClient = useQueryClient();
+
+  const [amount, setAmount] = useState(0);
+  const [userInfo, setUserInfo] = useState({});
+  console.log(userInfo);
+  const { data: users, refetch } = useQuery({
     queryKey: ["allusers"],
     queryFn: getAllUsers,
   });
-  const [amount, setAmount] = useState(0);
 
   const transfere = async (amount) => {
     const { data } = await instance.put(
-      "/mini-project/api/transactions/transfer/<username>",
+      `/mini-project/api/transactions/transfer/${userInfo?.username}`,
       { amount }
     );
     return data;
@@ -50,7 +54,7 @@ const Transfere = () => {
     const { data } = await instance.get("/mini-project/api/auth/me");
     return data;
   };
-  const { data: myProfile, refetch } = useQuery({
+  const { data: myProfile } = useQuery({
     queryKey: ["mybadget"],
     queryFn: myPofile,
   });
@@ -66,6 +70,7 @@ const Transfere = () => {
     },
     onSuccess: () => {
       refetch();
+      // queryClient.invalidateQueries("transfere");
     },
   });
 
@@ -85,6 +90,7 @@ const Transfere = () => {
         <input
           className="flex w-[80]"
           placeholder="your friend's user name"
+          value={userInfo?.username}
         ></input>
         <button
           onClick={mutate}
@@ -99,13 +105,20 @@ const Transfere = () => {
         </NavLink>
         <div className="w-[50%] h-[50%] space-y-2 flex flex-wrap space-x-5">
           {users?.map((user) => (
-            <div key={user._id} className=" bg-purple-500 p-6 rounded-md ">
+            <button
+              onClick={() => setUserInfo(user)}
+              key={user._id}
+              className=" bg-purple-500 p-6 rounded-md "
+            >
               <div className="text-center">
                 <h3 className="text-lg text-white font-semibold mb-2">
                   {user.username}
                 </h3>
+                <h3 className="text-lg text-white font-semibold mb-2">
+                  {user.balance}
+                </h3>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>

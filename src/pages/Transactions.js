@@ -9,15 +9,12 @@ const Transactions = () => {
     queryKey: ["mee"],
     queryFn: me,
   });
-  const transactions = async () => {
-    const { data } = await instance.get("/mini-project/api/transactions/my");
-    return data;
-  };
-  const { data: myTransaction } = useQuery({
-    queryKey: ["transaction"],
-    queryFn: transactions,
-  });
-  console.log(myTransaction);
+
+  // const { data: myTransaction } = useQuery({
+  //   queryKey: ["transaction"],
+  //   queryFn: transactions,
+  // });
+  // console.log(myTransaction);
   return (
     <div className="h-screen w-screen flex justify-center items-center bg-slate-100">
       <div className="bg-sky-50 flex justify-center flex-col items-center font-serif space-y-2 h-2/4 w-2/4 rounded-lg ">

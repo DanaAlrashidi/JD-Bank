@@ -6,6 +6,9 @@ const login = async (userInfo) => {
     "/mini-project/api/auth/login",
     userInfo
   );
+  if (data.token) {
+    saveToken(data.token);
+  }
   return data;
 };
 const register = async (userInfo) => {

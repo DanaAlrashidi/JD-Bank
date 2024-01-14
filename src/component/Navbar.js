@@ -1,52 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
 import img from "../assets/Logoo.png";
 import UserContext from "../context/Usercontext";
+import { NavLink } from "react-router-dom";
+import { deleteToken } from "../api/storage";
 const Navbar = () => {
-  // const [user, setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
 
   return (
     <div>
       {/* <Navbar className="bg-base-100"></Navbar> */}
       <div className="navbar bg-white">
         <div className="navbar-start ">
-          <div className="dropdown ">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+          {user ? (
+            <div className="dropdown ">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h7"
-                />
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h7"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-30"
+              >
+                <li>
+                  <a href="/">Homepage</a>
+                </li>
+                <li>
+                  <a href="/users">All Users</a>
+                </li>
+                <li>
+                  <a href="/transactions" className="bg-primary">
+                    Transactions
+                  </a>
+                </li>
+                <li>
+                  <a href="/search">Tranactions History</a>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-30"
-            >
-              <li>
-                <a href="/">Homepage</a>
-              </li>
-              <li>
-                <a href="/transactions" className="bg-primary">
-                  Transactions
-                </a>
-              </li>
-              <li>
-                <a href="/search">Search</a>
-              </li>
-            </ul>
-          </div>
+          ) : (
+            <h1 style={{ color: "white" }}>Hello</h1>
+          )}
         </div>
         <div className="navbar-center">
           {/* <a className="btn btn-ghost text-xl">JD.Bank</a> */}
@@ -55,7 +64,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-end ">
-          <button className="btn btn-ghost btn-circle">
+          {/* <button className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -70,8 +79,8 @@ const Navbar = () => {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-          </button>
-          <button className="btn btn-ghost btn-circle">
+          </button> */}
+          {/* <button className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +98,8 @@ const Navbar = () => {
               </svg>
               <span className="badge badge-xs badge-primary indicator-item"></span>
             </div>
-          </button>
+          </button> */}
+          {/* {user ? <h1>Hi!!!!</h1> : <p>Bye!!!</p>} */}
         </div>
       </div>
     </div>
