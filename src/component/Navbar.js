@@ -1,6 +1,9 @@
 import React from "react";
 import img from "../assets/Logoo.png";
+import UserContext from "../context/Usercontext";
 const Navbar = () => {
+  // const [user, setUser] = useContext(UserContext);
+
   return (
     <div>
       {/* <Navbar className="bg-base-100"></Navbar> */}
