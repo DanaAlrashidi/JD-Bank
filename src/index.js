@@ -10,7 +10,7 @@ import { Deposit } from "./pages/Deposit";
 import Register from "./pages/Register";
 import Search from "./pages/Search";
 import Transactions from "./pages/Transactions";
-import Transfere from "./pages/Transfere";
+import Transfere from "./pages/Transfere_";
 import Users from "./pages/Users";
 import Withdraw from "./pages/Withdraw";
 import { Login } from "./pages/Login";
